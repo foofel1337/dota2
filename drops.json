@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Faceless Death",
+        "rarity": "common",
+        "price": 1200
+    },
+    {
+        "name": "Trenchknight",
+        "rarity": "common",
+        "price": 1200
+    },
+    {
+        "name": "Temple Gala",
+        "rarity": "common",
+        "price": 1200
+    },
+    {
+        "name": "Furious Nethergeist",
+        "rarity": "common",
+        "price": 1200
+    },
+    {
+        "name": "Haunted Hunter",
+        "rarity": "common",
+        "price": 1200
+    },
+    {
+        "name": "Artist of the Astral Summer",
+        "rarity": "common",
+        "price": 1200
+    },
+    {
+        "name": "Song of the Bluebird",
+        "rarity": "common",
+        "price": 1200
+    }
+]

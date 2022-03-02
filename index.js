@@ -1,25 +1,37 @@
+const { Telegraf } = require("telegraf");
+const inventoryManager = require('./inventory.js');
 require("dotenv").config();
-const telebot = require('telebot');
-const fs = require('fs');
-const bot = new telebot(process.env.TOKEN);
+const fs = require("fs");
 
-bot.on('/start', (msg) => msg.reply.text('че надо гремлин'));
+let inventory = []
 
-bot.on('/collections', (msg) => {
-	msg.reply.photo('col1.png'); 
-	msg.reply.text('Лабиринт Аганима 2021: Ageless Heirlooms');
-});
+const bot = new Telegraf(process.env.TOKEN);
 
-bot.on('start', (msg) => {
-	loadCollections();	
-});
+bot.command("start", (ctx) => {
+	ctx.reply("здароу")
+}) 
 
 
-// opening
+bot.command("openaghanim1", (ctx) => {
+	fs.readFile("./drops.json", (err, jsonString) => {
+		if (err) {
+			console.log(err);
+		}
 
-bot.on('/openaghanim1', (msg) =>
-	let drop = 0;
-	msg.reply.text("you got " + drop);
-});
+		try {
+			let drops = JSON.parse(jsonString)
+			let drop = drops[Math.floor(Math.random() * 7)]
+			ctx.reply("ты получил " + drop.name + "\n/inv");
+			inventoryManager.writeToInv(inventory, drop.name);
+		} catch (err) {
+			console.log(err);
+		}
+	})
+})
 
-bot.start();
+bot.command("inv", (ctx) => {
+	ctx.reply(inventory);
+})
+
+bot.launch()
+console.log("poehali")

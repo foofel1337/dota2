@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "telebot": "^1.4.1"
+    "dotenv": "^16.0.0",
+    "telebot": "^1.4.1",
+    "telegraf": "^4.7.0"
   }
 }
