@@ -10,10 +10,16 @@ bot.on('/collections', (msg) => {
 	msg.reply.text('Лабиринт Аганима 2021: Ageless Heirlooms');
 });
 
+bot.on('start', (msg) => {
+	loadCollections();	
+});
+
+
 // opening
 
-bot.on('/open', (msg) => {
-	msg.reply.text("test");
+bot.on('/openaghanim1', (msg) =>
+	let drop = 0;
+	msg.reply.text("you got " + drop);
 });
 
 bot.start();
