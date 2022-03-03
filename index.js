@@ -1,5 +1,4 @@
 const { Telegraf } = require("telegraf");
-const inventoryManager = require('./inventory.js');
 require("dotenv").config();
 const fs = require("fs");
 
@@ -22,7 +21,7 @@ bot.command("openaghanim1", (ctx) => {
 			let drops = JSON.parse(jsonString)
 			let drop = drops[Math.floor(Math.random() * 7)]
 			ctx.reply("ты получил " + drop.name + "\n/inv");
-			inventoryManager.writeToInv(inventory, drop.name);
+			inventory.push(drop.name);
 		} catch (err) {
 			console.log(err);
 		}
@@ -30,7 +29,11 @@ bot.command("openaghanim1", (ctx) => {
 })
 
 bot.command("inv", (ctx) => {
-	ctx.reply(inventory);
+	let inv = ""
+	for (let item in inventory) {
+		inv += inventory[item].name + "\n"
+	}
+	ctx.reply(inv)
 })
 
 bot.launch()
