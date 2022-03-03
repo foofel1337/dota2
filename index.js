@@ -29,11 +29,15 @@ bot.command("openaghanim1", (ctx) => {
 })
 
 bot.command("inv", (ctx) => {
-	let inv = ""
-	for (let item in inventory) {
-		inv += inventory[item].name + "\n"
+	let inv = "."
+	if (!inventory) {
+		ctx.reply("у тебя нет нихуя")
+	}else{
+		for (let item in inventory) {
+			inv += inventory[item] + "\n"
+		}
+		ctx.reply(inv)
 	}
-	ctx.reply(inv)
 })
 
 bot.launch()
